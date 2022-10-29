@@ -8,6 +8,7 @@
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
         <load-on-startup>0</load-on-startup>
     </servlet>
+<!--        When Tomcat runs the DispatcherServlet, it will internally create a spring ioc container-->
 
     <servlet-mapping>
         <servlet-name>jupiter</servlet-name>
