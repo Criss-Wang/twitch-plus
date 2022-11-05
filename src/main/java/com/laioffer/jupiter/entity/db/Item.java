@@ -2,6 +2,7 @@ package com.laioffer.jupiter.entity.db;
 
 import com.fasterxml.jackson.annotation.*;
 
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;

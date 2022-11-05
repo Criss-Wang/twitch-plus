@@ -1,7 +1,12 @@
-public class PK implements Serializable {
-    private String itemId;
-    private String userId;
-}
+package com.laioffer.jupiter.entity.db;
+
+import com.laioffer.jupiter.entity.db.PK;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.IdClass;
+import javax.persistence.Table;
+import java.sql.Date;
 
 @Entity
 @Table(name = "favorite_records")

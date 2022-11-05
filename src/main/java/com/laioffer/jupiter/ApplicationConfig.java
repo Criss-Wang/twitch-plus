@@ -1,7 +1,13 @@
 package com.laioffer.jupiter;
 
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.jdbc.datasource.DriverManagerDataSource;
+import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+
+import javax.sql.DataSource;
+import java.util.Properties;
 
 @Configuration
 @EnableWebMvc
@@ -18,9 +24,9 @@ public class ApplicationConfig {
 
     @Bean(name = "dataSource")
     public DataSource dataSource() {
-        String RDS_ENDPOINT = "YOUR_RDS_INSTANCE_ADDRESS";
-        String USERNAME = "USERNAME";
-        String PASSWORD = "PASSWORD";
+        String RDS_ENDPOINT = "twitch-db.cnliprrs5mwo.us-east-1.rds.amazonaws.com";
+        String USERNAME = "admin";
+        String PASSWORD = "djjwzl1998";
         //需要修改红色部分, 保留其他内容,  YOUR_RDS_INSTANCE_ADDRESS,USERNAME,  PASSWORD are information created last lesson
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
