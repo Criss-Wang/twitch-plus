@@ -27,7 +27,7 @@ public class FavoriteController {
         HttpSession session = request.getSession(false);
         if (session == null) {
             response.setStatus(HttpServletResponse.SC_FORBIDDEN);
-            return ;
+            return;
         }
         String userId = (String) session.getAttribute("user_id");
         favoriteService.setFavoriteItem(userId, requestBody.getFavoriteItem());
