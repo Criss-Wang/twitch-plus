@@ -59,6 +59,7 @@ public class FavoriteDao {
 
     public Set<Item> getFavoriteItems(String userId) {
         Session session = null;
+
         try {
             session = sessionFactory.openSession();
             return session.get(User.class, userId).getItemSet();
@@ -80,13 +81,10 @@ public class FavoriteDao {
             itemMap.put(type.toString(), new ArrayList<>());
         }
 
-        try (Session session = sessionFactory.openSession()) {
-            for(Item item : favoriteItemIds) {
-                itemMap.get(item.getType().toString()).add(item.getGameId());
-            }
-        } catch (Exception ex) {
-            ex.printStackTrace();
+        for(Item item : favoriteItemIds) {
+            itemMap.get(item.getType().toString()).add(item.getGameId());
         }
+
         return itemMap;
     }
 }
