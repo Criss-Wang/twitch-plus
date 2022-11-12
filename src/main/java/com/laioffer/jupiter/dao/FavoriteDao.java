@@ -1,14 +1,14 @@
 package com.laioffer.jupiter.dao;
 
 import com.laioffer.jupiter.entity.db.Item;
+import com.laioffer.jupiter.entity.db.ItemType;
 import com.laioffer.jupiter.entity.db.User;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 @Repository
 public class FavoriteDao {
@@ -73,4 +73,20 @@ public class FavoriteDao {
         return new HashSet<>();
     }
 
+    // Get favorite items for the given user. The returned map includes three entries like {"Video": [item1, item2, item3], "Stream": [item4, item5, item6], "Clip": [item7, item8, ...]}
+    public Map<String, List<String>> getFavoriteGameIds(Set<Item> favoriteItemIds) {
+        Map<String, List<String>> itemMap = new HashMap<>();
+        for (ItemType type : ItemType.values()) {
+            itemMap.put(type.toString(), new ArrayList<>());
+        }
+
+        try (Session session = sessionFactory.openSession()) {
+            for(Item item : favoriteItemIds) {
+                itemMap.get(item.getType().toString()).add(item.getGameId());
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return itemMap;
+    }
 }

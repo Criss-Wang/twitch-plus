@@ -31,6 +31,5 @@ public class GameController {
         } catch (TwitchException e) {
             throw new ServletException(e);
         }
-
     }
 }
